@@ -49,6 +49,9 @@ import math
 a = int(input('введите а:'))
 b = int(input('введите b:'))
 c = int(input('введите c:'))
+x = 0	
+x1 = 0
+x2 = 0
 
 D = b**2-4*a*c
 
