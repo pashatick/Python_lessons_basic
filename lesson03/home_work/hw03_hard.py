@@ -9,6 +9,50 @@
 # Ввод: -2/3 - -2
 # Вывод: 1 1/3
 
+ex = input('Введите "n x/y +/- n x/y": ')
+s = ex.split()
+#n1 = s[0], s[1]
+#n2 = s[3], s[4]
+print(s)
+
+def magic1(s):
+	if s[0].isdigit():
+		dr = s[1].split('/')
+		ch = int(s[0])*int(dr[1])+int(dr[0])
+		zn = int(dr[1])
+	else:
+		dr = s[0].split('/')
+		ch = int(dr[0])
+		zn = int(dr[1])		
+	return ch, zn
+def magic2(s):
+	if s[-2].isdigit():
+		dr = s[-1].split('/')
+		ch = int(s[-2])*int(dr[1])+int(dr[0]) 
+		zn = int(dr[1])
+	else:
+		dr = s[-1].split('/')
+		ch = int(dr[0])
+		zn = int(dr[1])
+	return ch, zn
+
+n1 = list(magic1(s))
+n2 = list(magic2(s))
+print(n1, n2)
+if s[1] == '+' or s[2] == '+':	
+	x = ((int(n1[1])*int(n2[0]))+(int(n1[0])*int(n2[1])))//(int(n1[1])*int(n2[1]))
+	y = ((int(n1[1])*int(n2[0]))+(int(n1[0])*int(n2[1])))%(int(n1[1])*int(n2[1]))
+	z = int(n1[1])*int(n2[1]
+elif s[1] == '-' or s[2] == '-':	 
+	x = ((int(n1[1])*int(n2[0]))-(int(n1[0])*int(n2[1])))//(int(n1[1])*int(n2[1]))
+	y = ((int(n1[1])*int(n2[0]))-(int(n1[0])*int(n2[1])))%(int(n1[1])*int(n2[1]))
+	z = int(n1[1])*int(n2[1]
+else:
+	print('Неверный аргумент')
+
+print(x, y,'/', z)
+	
+
 
 # Задание-2:
 # Дана ведомость расчета заработной платы (файл "data/workers").
@@ -17,7 +61,20 @@
 # то их ЗП уменьшается пропорционально, а за заждый час переработки
 # они получают удвоенную ЗП, пропорциональную норме.
 # Кол-во часов, которые были отработаны, указаны в файле "data/hours_of"
+'''
+import os
 
+path = os.path.join('data','workers')
+f = open(path, 'r', encoding='UTF-8')
+
+
+
+for line in f:
+	st = line.split(' ')
+	print(st)
+f.close()
+ 
+'''
 
 # Задание-3:
 # Дан файл ("data/fruits") со списком фруктов.
