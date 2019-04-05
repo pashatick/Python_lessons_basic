@@ -13,3 +13,46 @@
 # Для решения данной задачи используйте алгоритмы из задания easy,
 # оформленные в виде соответствующих функций,
 # и импортированные в данный файл из easy.py
+
+
+import shutil
+import os
+import sys
+import hw05_easy as h5 
+
+if __name__ == '__main__':
+	pass
+
+
+print('Выберите действие: \n 1. Перейти в папку \n 2. Просмотреть содержимое текущей папки \n 3. Удалить папку \n 4. Создать папку')
+
+i = 10
+while i != 0:
+	path = os.getcwd()	
+	i = int(input('Введите номер операции: '))
+	if i == 1:
+		path = input('Введите адрес папки ')
+		try:		
+			h5.ch_dir(path)
+			print('Вы сменили директорию!')
+		except FileNotFoundError:
+			print('Невозможно перейти!')
+	elif i == 2: 
+		h5.list_dir(path)
+	elif i == 3:
+		path = input('Введите адрес папки ')		
+		try:		
+			h5.del_dir(path)
+			print('Диретория удалена')
+		except FileExistsError:
+			print('Ошибка при удалении')
+	elif i == 4:
+		nd = os.path.join(os.getcwd(), input('Введите имя создоваемой папки '))
+		try:		
+			h5.mk_dir(nd)
+		except FileExistsError:
+			print('Невозможно создать папку')	
+	elif i == 0:
+		print('Выход из программы')
+	else:
+		print('Неверная команда!')
